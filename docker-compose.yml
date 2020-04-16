@@ -1,8 +1,11 @@
 version: '2.0'
 
 services:
-  web:
-    build: ./
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-api
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./:/usr/src/app/
@@ -11,6 +14,7 @@ services:
     env_file:
       - ./.env.dev
   db:
+    container_name: db
     image: postgres:12.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
@@ -18,5 +22,15 @@ services:
       - POSTGRES_USER=django_user
       - POSTGRES_PASSWORD=django_pass258
       - POSTGRES_DB=django_db
+  vue:
+    container_name: vue
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-vue
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - 8001:8080
 volumes:
   postgres_data:
