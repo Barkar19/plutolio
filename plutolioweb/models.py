@@ -29,7 +29,7 @@ class Position(models.Model):
 
     id = models.AutoField(primary_key=True)
     place = models.CharField(max_length=32)
-    ptype = models.CharField(max_length=3, choices=TYPE_CHOICES, default=TYPE_OTHER)
+    type = models.CharField(max_length=3, choices=TYPE_CHOICES, default=TYPE_OTHER)
     assetclass = models.CharField(max_length=3, choices=ASSETCLASS_CHOICES, default=ASSETCLASS_ALTERNATIVES)
     info = models.CharField(max_length=256)
     quantity = models.IntegerField()
