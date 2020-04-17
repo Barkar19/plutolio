@@ -8,7 +8,7 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-COPY ./plutolio-frontend/package.json /app/package.json
+COPY ./frontend/package.json /app/package.json
 RUN npm install
 RUN npm install @vue/cli -g
 

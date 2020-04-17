@@ -14,12 +14,12 @@ RUN apk update \
 
 # install dependencies
 RUN pip install --upgrade pip
-COPY ./plutolio-backend/requirements.txt /usr/src/app/requirements.txt
+COPY ./backend/requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
 
 # copy entrypoint.sh
-COPY ./plutolio-backend/entrypoint.sh /usr/src/app/entrypoint.sh
+COPY ./backend/entrypoint.sh /usr/src/app/entrypoint.sh
 # copy project
-COPY ./plutolio-backend/ /usr/src/app/
+COPY ./backend/ /usr/src/app/
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
