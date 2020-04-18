@@ -1,11 +1,17 @@
 <template>
   <div class="hello">
     <h1>Current positions</h1>
-    <ul id="example-1">
-      <li v-for="item in info" :key="item.id">
-        {{ item.id }} {{ item.place }}
-      </li>
-    </ul>
+    <section v-if="errored">
+      <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+    </section>
+    <section v-else>
+      <div v-if="loading">Loading...</div>
+      <ul id="example-1">
+        <li v-for="item in info" :key="item.id">
+          {{ item.id }} {{ item.place }}
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 
@@ -16,12 +22,20 @@ export default {
   name: 'SimpleTable',
   data () {
     return {
-      info: null
+      info: null,
+      loading: true,
+      errored: false
     }
   },
   mounted()
   {
-    axios.get('http://localhost:8000/api/position/?format=json').then(response => (this.info = response.data))
+    axios .get('http://localhost:8000/api/position/?format=json')
+          .then(response => (this.info = response.data))
+          .catch(error => {
+            console.log(error)
+            this.errored = true
+          })
+         .finally(() => this.loading = false)
   }
 }
 </script>
