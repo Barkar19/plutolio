@@ -2,3 +2,4 @@
 backend/plutolio/__pycache__/
 backend/restapi/migrations/
 .vscode
+venv/
