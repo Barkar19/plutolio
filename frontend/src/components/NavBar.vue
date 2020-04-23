@@ -5,7 +5,7 @@
       clipped
     >
       <v-list dense>
-        <v-list-item link v-for="l in links" :key="l.route">
+        <v-list-item link v-for="l in links" :key="l.route" router :to="l.route">
           <v-list-item-action>
             <v-icon>{{ l.icon }}</v-icon>
           </v-list-item-action>

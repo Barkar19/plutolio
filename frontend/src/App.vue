@@ -10,6 +10,9 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>Plutolio</v-toolbar-title>
     </v-app-bar>
+    <v-content>
+    <router-view></router-view>
+    </v-content>
 
     <v-footer app>
       <span>&copy; 2020</span>
