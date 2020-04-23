@@ -8,14 +8,14 @@
       clipped-left
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Plutolio</v-toolbar-title>
+      <v-toolbar-title>Plutolio </v-toolbar-title>
     </v-app-bar>
-    <v-content>
-    <router-view></router-view>
+    <v-content class="mx-4">
+    <router-view @nightModeChanged="changeNightMode($event)"></router-view>
     </v-content>
 
     <v-footer app>
-      <span>&copy; 2020</span>
+      <span>&copy; 2020 <h1> </h1></span>
     </v-footer>
   </v-app>
 </template>
@@ -34,10 +34,17 @@ import NavBar from './components/NavBar.vue'
       drawer: null,
     }),
 
-    created () {
-      this.$vuetify.theme.dark = true
+    methods: {
+      changeNightMode(mode) {
+        // console.log("Need to chnge!", mode)
+        this.$vuetify.theme.dark = mode
+      }
     },
 
-    
+    created () {
+      this.changeNightMode(true)
+    },
+
+
   }
 </script>

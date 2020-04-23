@@ -1,5 +1,10 @@
 <template>
-    <h1> Currencies </h1>
+    <div>
+        <h1> Currencies </h1>
+        <v-container>
+            
+        </v-container>
+    </div>
 </template>
 
 <script>

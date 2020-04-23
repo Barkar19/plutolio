@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>Current positions</h1>
+    <h3>Current positions</h3>
     <section v-if="errored">
       <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
     </section>
